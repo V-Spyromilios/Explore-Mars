@@ -113,6 +113,6 @@ struct CustomTextFieldStyle: TextFieldStyle {
 
 struct Login_View_Previews: PreviewProvider {
 	static var previews: some View {
-		Login_View()
+		Login_View().previewDevice(PreviewDevice(rawValue: "iPhone 14"))
 	}
 }
