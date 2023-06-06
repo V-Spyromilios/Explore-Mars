@@ -16,10 +16,7 @@ struct RegistrationView: View {
 	@State private var registrationIsValid = false
 	
 	var body: some View {
-		
-		onReceive(viewModel.registrationIsValid) { result in
-			self.registrationIsValid = result
-		}
+
 		GeometryReader { geometry in
 			VStack(spacing: 18) {
 				Spacer()
@@ -32,6 +29,9 @@ struct RegistrationView: View {
 					.frame(height: 18)
 					.padding(.all)
 					.cornerRadius(10)
+					.onReceive(viewModel.registrationIsValid) { result in
+						self.registrationIsValid = result
+		   }
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
 							.stroke(Color.white, lineWidth: 2))
@@ -48,16 +48,16 @@ struct RegistrationView: View {
 							.stroke(Color.white, lineWidth: 2))
 				
 				
-				Button("Continue", action: {})
+				Button("Continue", action: { print("Button Tapped.")})
 					.frame(height: 18)
 					.padding(.all)
-					.opacity(registrationIsValid ? 1.0 : 0.7)
 					.disabled(registrationIsValid ? false : true)
 					.background {
 						RoundedRectangle(cornerRadius: 10).fill(Color.blue)
 					}.foregroundColor(.white)
+					.opacity(registrationIsValid ? 1.0 : 0.5)
 			}
-		}
+		}.background(registrationBackgroundView())
 	}
 	
 	private func getFirstSpacerHeight(with geometry: GeometryProxy) -> CGFloat {

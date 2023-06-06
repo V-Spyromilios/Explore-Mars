@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct Explore_MarsApp: App {
     var body: some Scene {
+
         WindowGroup {
             ContentView()
         }

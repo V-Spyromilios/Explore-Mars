@@ -5,11 +5,10 @@
 //  Created by Evangelos Spyromilios on 01.06.23.
 //
 
-import Foundation
 import SwiftUI
 import Combine
 
-final class User: ObservableObject {
+class User: ObservableObject {
 
 	@Published var email: String = ""
 	@Published var password: String = ""
