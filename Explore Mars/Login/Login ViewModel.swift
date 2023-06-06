@@ -6,9 +6,21 @@
 //
 
 import Foundation
+import SwiftUI
+import Combine
 
 final class User: ObservableObject {
 
 	@Published var email: String = ""
 	@Published var password: String = ""
+
+
+	var loginIsValid: AnyPublisher<Bool, Never> {
+
+		Publishers.CombineLatest($email, $password).map { email, password in
+
+			return email.contains("@") && !password.isEmpty
+		}
+		.eraseToAnyPublisher()
+	}
 }

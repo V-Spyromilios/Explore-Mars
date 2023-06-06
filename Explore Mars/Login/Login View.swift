@@ -9,19 +9,23 @@ import SwiftUI
 
 struct Login_View: View {
 	
-	@ObservedObject var userLogin = User()
-	@Environment(\.verticalSizeClass) var verticalSizeClass
-	@FocusState var emailIsFocused : Bool
-	@FocusState var passwordIsFocused : Bool // FocusState does not take arguments!!
+	@ObservedObject private var viewModel = User()
+	@Environment(\.verticalSizeClass) private var verticalSizeClass
+	@FocusState private var emailIsFocused : Bool
+	@FocusState private var passwordIsFocused : Bool // FocusState does not take arguments!!
+	@State private var loginIsValid = false
 
-	
 	var body: some View {
 
+
+		onReceive(viewModel.loginIsValid) { result in
+			self.loginIsValid = result
+		}
 		GeometryReader { geometry in
 			VStack(spacing: 18) {
 				Spacer()
 					.frame(height: getFirstSpacerHeight(with: geometry))
-				TextField("", text: $userLogin.email, prompt: Text("email").foregroundColor(.white.opacity(0.6)))
+				TextField("", text: $viewModel.email, prompt: Text("email").foregroundColor(.white.opacity(0.6)))
 					.textFieldStyle(CustomTextFieldStyle())
 					.textContentType(.emailAddress)
 					.focused($emailIsFocused)
@@ -33,8 +37,8 @@ struct Login_View: View {
 						RoundedRectangle(cornerRadius: 10)
 							.stroke(Color.white, lineWidth: 2))
 					
-				
-				TextField("", text: $userLogin.password, prompt: Text("password").foregroundColor(.white.opacity(0.6)))
+
+				TextField("", text: $viewModel.password, prompt: Text("password").foregroundColor(.white.opacity(0.6)))
 					.textFieldStyle(CustomTextFieldStyle())
 					.focused($passwordIsFocused)
 					.frame(height: 18)
@@ -48,10 +52,13 @@ struct Login_View: View {
 				Spacer()
 					.frame(height: getSecondSpacerHeight(with: geometry))
 				HStack(alignment: .bottom) {
-					Button("Check") {
-						print("VStack Height: \( geometry.size.height)")
-						print("VStack Width: \( geometry.size.width)")
-					}
+					NavigationLink("Don't have an Account?", destination: RegistrationView())
+						.opacity(loginIsValid ? 1: 0.7)
+						.disabled(loginIsValid ? false : true)
+//					Button("Check") {
+//						print("VStack Height: \( geometry.size.height)")
+//						print("VStack Width: \( geometry.size.width)")
+//					}
 					
 					Spacer()
 					Image("nasa-logo")
@@ -116,3 +123,4 @@ struct Login_View_Previews: PreviewProvider {
 		Login_View().previewDevice(PreviewDevice(rawValue: "iPhone 14"))
 	}
 }
+ 
