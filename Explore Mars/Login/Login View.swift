@@ -15,61 +15,78 @@ struct Login_View: View {
 	@FocusState private var passwordIsFocused : Bool // FocusState does not take arguments!!
 	@State private var loginIsValid = false
 	@State private var registrationViewIsPresented = false
+	@State var isRegistrationComplete = false
 
 	var body: some View {
-
+		
+		NavigationView {
 		GeometryReader { geometry in
-
-			VStack(spacing: 18) {
-				Spacer()
-					.frame(height: getFirstSpacerHeight(with: geometry))
-				TextField("", text: self.$viewModel.email, prompt: Text("email").foregroundColor(.white.opacity(0.6)))
-					.textFieldStyle(CustomTextFieldStyle())
-					.textContentType(.emailAddress)
-					.focused($emailIsFocused)
-					.keyboardType(.emailAddress)
-					.frame(height: 18)
-					.padding(.all)
-					.cornerRadius(10)
-					.overlay(
-						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.white, lineWidth: 2))
-					.onReceive(viewModel.loginIsValid) { result in
-						loginIsValid = result
-		   }
-					
-
-				TextField("", text: self.$viewModel.password, prompt: Text("password").foregroundColor(.white.opacity(0.6)))
-					.textFieldStyle(CustomTextFieldStyle())
-					.focused($passwordIsFocused)
-					.frame(height: 18)
-					.padding(.all)
-					.cornerRadius(10)
-					.overlay(
-						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.white, lineWidth: 2))
-					
-					
-				Spacer()
-					.frame(height: getSecondSpacerHeight(with: geometry))
-				HStack(alignment: .center) {
-					Button(action: { registrationViewIsPresented.toggle() }) { Text("Don't have an account?")}
-
+			
+				VStack(spacing: 18) {
 					Spacer()
-					Image("nasa-logo")
-						.resizable()
-						.frame(width: getImageDiamensions(with: geometry), height: getImageDiamensions(with: geometry))
+						.frame(height: getFirstSpacerHeight(with: geometry))
+					TextField("", text: self.$viewModel.email, prompt: Text("email").foregroundColor(.white.opacity(0.6)))
+						.textFieldStyle(CustomTextFieldStyle())
+						.textContentType(.emailAddress)
+						.focused($emailIsFocused)
+						.keyboardType(.emailAddress)
+						.frame(height: 18)
+						.padding(.all)
+						.cornerRadius(10)
+						.overlay(
+							RoundedRectangle(cornerRadius: 10)
+								.stroke(Color.white, lineWidth: 2)
+								.opacity(0.7)).padding(.horizontal)
+						.onReceive(viewModel.loginIsValid) { result in
+							loginIsValid = result
+						}
+					
+					
+					TextField("", text: self.$viewModel.password, prompt: Text("password").foregroundColor(.white.opacity(0.6)))
+						.textFieldStyle(CustomTextFieldStyle())
+						.focused($passwordIsFocused)
+						.frame(height: 18)
+						.padding(.all)
+						.cornerRadius(10)
+						.overlay(
+							RoundedRectangle(cornerRadius: 10)
+								.stroke(Color.white, lineWidth: 2)
+								.opacity(0.7)).padding(.horizontal)
+					Button("Log in", action: { print("Button Tapped.")
+					})
+						.frame(height: 18)
+						.padding(.all)
+						.disabled(loginIsValid ? false : true)
+						.background {
+							RoundedRectangle(cornerRadius: 10).fill(Color.blue)
+						}.foregroundColor(.white)
+						.opacity(loginIsValid  ? 1.0 : 0.5)
+					
+					Spacer()
+						.frame(height: getSecondSpacerHeight(with: geometry))
+					HStack(alignment: .center) {
+						//Button(action: { registrationViewIsPresented.toggle() }) { Text("Don't have an account?")}
+						NavigationLink("Dont have an Account?", destination: RegistrationView(isRegistrationComplete: $isRegistrationComplete))
+							.navigationBarHidden(isRegistrationComplete) // Hide the navigation bar when registration is complete
+							.navigationBarBackButtonHidden(isRegistrationComplete)
+						
+						Spacer()
+						Image("nasa-logo")
+							
+							.frame(width: getImageWidth(), height: getImageHeight())
+					}.padding(.horizontal)
+					.frame(maxHeight: geometry.size.height * 0.15)
 				}
-				.frame(maxHeight: geometry.size.height * 0.15)
-			}.sheet(isPresented: $registrationViewIsPresented) {
-				RegistrationView()
-		 }
-			.onTapGesture {
-				dismissKeyboard()
-			}.padding(.horizontal)
+			}
+				.onTapGesture {
+					dismissKeyboard()
+				}
+				.background(LoginbackgroundView())
+				.navigationBarTitle("Explore Mars")
+				.navigationBarTitleDisplayMode(.large)
 		}
-		.background(LoginbackgroundView())
-	}
+		}
+	
 	
 	
 	func dismissKeyboard() {
@@ -82,12 +99,17 @@ struct Login_View: View {
 	// .compact == true ->  Landscape
 	private func getSecondSpacerHeight(with geometry: GeometryProxy) -> CGFloat {
 		
-		return verticalSizeClass == .compact ? geometry.size.height * 0.35 : geometry.size.height * 0.55
+		return verticalSizeClass == .compact ? geometry.size.height * 0.07 : geometry.size.height * 0.4
 	}
 
-	private func getImageDiamensions(with geometry: GeometryProxy) -> CGFloat {
+	private func getImageHeight() -> CGFloat {
 
-		return verticalSizeClass == .compact ? geometry.size.width * 0.1 : geometry.size.width * 0.2
+		return verticalSizeClass == .compact ? 55 : 88
+	}
+
+	private func getImageWidth() -> CGFloat {
+
+		return verticalSizeClass == .compact ? 46 : 73
 	}
 
 	private func getFirstSpacerHeight(with geometry: GeometryProxy) -> CGFloat {

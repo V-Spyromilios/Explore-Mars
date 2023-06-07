@@ -9,8 +9,9 @@ import SwiftUI
 
 struct LoginbackgroundView: View {
 	var body: some View {
+
 		GeometryReader { geometry in
-			Image("Airfield")
+			Image("Mars_Valles_Marineris")
 				.resizable()
 				.aspectRatio(contentMode: .fill)
 				.ignoresSafeArea()

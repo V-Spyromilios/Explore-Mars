@@ -11,9 +11,11 @@ struct RegistrationView: View {
 	
 	@ObservedObject private var viewModel = RegistrationViewModel()
 	@Environment(\.verticalSizeClass) private var verticalSizeClass
+	@Environment(\.presentationMode) private var presentationMode
 	@FocusState private var emailIsFocused : Bool
 	@FocusState private var passwordIsFocused : Bool
 	@State private var registrationIsValid = false
+	@Binding var isRegistrationComplete: Bool
 	
 	var body: some View {
 
@@ -34,7 +36,8 @@ struct RegistrationView: View {
 		   }
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.white, lineWidth: 2))
+							.stroke(Color.white, lineWidth: 2)
+							.opacity(0.7)).padding(.horizontal)
 				
 				
 				TextField("", text: $viewModel.newPassword, prompt: Text("password").foregroundColor(.white.opacity(0.6)))
@@ -45,10 +48,14 @@ struct RegistrationView: View {
 					.cornerRadius(10)
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.white, lineWidth: 2))
+							.stroke(Color.white, lineWidth: 2)
+							.opacity(0.7)).padding(.horizontal)
 				
 				
-				Button("Continue", action: { print("Button Tapped.")})
+				Button("Continue", action: { print("Button Tapped.")
+					isRegistrationComplete = true
+					presentationMode.wrappedValue.dismiss()
+				})
 					.frame(height: 18)
 					.padding(.all)
 					.disabled(registrationIsValid ? false : true)
@@ -57,12 +64,20 @@ struct RegistrationView: View {
 					}.foregroundColor(.white)
 					.opacity(registrationIsValid ? 1.0 : 0.5)
 			}
+			.onTapGesture {
+				dismissKeyboard()
+			}
 		}.background(registrationBackgroundView())
 	}
 	
 	private func getFirstSpacerHeight(with geometry: GeometryProxy) -> CGFloat {
 		
 		return verticalSizeClass == .compact ? geometry.size.height * 0.08 : geometry.size.height * 0.11
+	}
+	private func dismissKeyboard() {
+
+		emailIsFocused = false
+		passwordIsFocused = false
 	}
 	
 	struct CustomTextFieldStyle: TextFieldStyle {
@@ -78,6 +93,6 @@ struct RegistrationView: View {
 
 struct RegistrationView_Previews: PreviewProvider {
 	static var previews: some View {
-		RegistrationView()
+		RegistrationView(isRegistrationComplete: .constant(false))
 	}
 }
