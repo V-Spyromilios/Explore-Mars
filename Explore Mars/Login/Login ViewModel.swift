@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class User: ObservableObject {
+class LoginViewModel: ObservableObject {
 
 	@Published var email: String = ""
 	@Published var password: String = ""

@@ -1,0 +1,10 @@
+
+GoogleService-Info.plist
+.DS_Store
+*.swp
+*~.nib
+
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM

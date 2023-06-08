@@ -16,6 +16,9 @@
 		EF6F43DB2A28CF600009BDEA /* Response Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43DA2A28CF600009BDEA /* Response Model.swift */; };
 		EF6F43DD2A28D44E0009BDEA /* Login View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43DC2A28D44E0009BDEA /* Login View.swift */; };
 		EF6F43E02A28D7300009BDEA /* Login ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43DF2A28D7300009BDEA /* Login ViewModel.swift */; };
+		EF87F79D2A3215390070AD93 /* Login Fields and Button View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF87F79C2A3215390070AD93 /* Login Fields and Button View.swift */; };
+		EF87F79F2A321CAB0070AD93 /* Registration Link and Image View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF87F79E2A321CAA0070AD93 /* Registration Link and Image View.swift */; };
+		EF87F7A12A3221080070AD93 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EF87F7A02A3221080070AD93 /* .gitignore */; };
 		EFD574A32A2F61C500000071 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD574A22A2F61C500000071 /* RegistrationView.swift */; };
 		EFD574A52A2F673900000071 /* Registration ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD574A42A2F673900000071 /* Registration ViewModel.swift */; };
 		EFF4CD5A2A2F86EA00F1DE42 /* registrationBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF4CD592A2F86EA00F1DE42 /* registrationBackgroundView.swift */; };
@@ -33,6 +36,9 @@
 		EF6F43DA2A28CF600009BDEA /* Response Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response Model.swift"; sourceTree = "<group>"; };
 		EF6F43DC2A28D44E0009BDEA /* Login View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login View.swift"; sourceTree = "<group>"; };
 		EF6F43DF2A28D7300009BDEA /* Login ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login ViewModel.swift"; sourceTree = "<group>"; };
+		EF87F79C2A3215390070AD93 /* Login Fields and Button View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login Fields and Button View.swift"; sourceTree = "<group>"; };
+		EF87F79E2A321CAA0070AD93 /* Registration Link and Image View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Registration Link and Image View.swift"; sourceTree = "<group>"; };
+		EF87F7A02A3221080070AD93 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EFD574A22A2F61C500000071 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		EFD574A42A2F673900000071 /* Registration ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Registration ViewModel.swift"; sourceTree = "<group>"; };
 		EFF4CD592A2F86EA00F1DE42 /* registrationBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registrationBackgroundView.swift; sourceTree = "<group>"; };
@@ -52,6 +58,8 @@
 		EF6F43BC2A28CDCD0009BDEA = {
 			isa = PBXGroup;
 			children = (
+				EF87F79E2A321CAA0070AD93 /* Registration Link and Image View.swift */,
+				EF87F7A02A3221080070AD93 /* .gitignore */,
 				EF6F43C72A28CDCD0009BDEA /* Explore Mars */,
 				EF6F43C62A28CDCD0009BDEA /* Products */,
 			);
@@ -100,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				EF6F43DC2A28D44E0009BDEA /* Login View.swift */,
+				EF87F79C2A3215390070AD93 /* Login Fields and Button View.swift */,
 				EFD574A22A2F61C500000071 /* RegistrationView.swift */,
 				EFD574A42A2F673900000071 /* Registration ViewModel.swift */,
 				EF6EE6C52A2E1901006F718E /* LoginbackgroundView.swift */,
@@ -168,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF6F43D02A28CDCE0009BDEA /* Preview Assets.xcassets in Resources */,
+				EF87F7A12A3221080070AD93 /* .gitignore in Resources */,
 				EF6F43CD2A28CDCE0009BDEA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,7 +190,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF6F43CB2A28CDCD0009BDEA /* ContentView.swift in Sources */,
+				EF87F79D2A3215390070AD93 /* Login Fields and Button View.swift in Sources */,
 				EF6F43D82A28CF1E0009BDEA /* Mission Manifest Model.swift in Sources */,
+				EF87F79F2A321CAB0070AD93 /* Registration Link and Image View.swift in Sources */,
 				EFF4CD5A2A2F86EA00F1DE42 /* registrationBackgroundView.swift in Sources */,
 				EF6F43C92A28CDCD0009BDEA /* Explore_MarsApp.swift in Sources */,
 				EF6F43DD2A28D44E0009BDEA /* Login View.swift in Sources */,
@@ -327,6 +339,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -358,6 +371,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
