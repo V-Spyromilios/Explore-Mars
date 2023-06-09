@@ -16,10 +16,8 @@ struct Login_View: View {
 	@State var isRegistrationComplete = false
 	
 	var body: some View {
-		
 		NavigationView {
 			GeometryReader { geometry in
-				
 				VStack(spacing: 18) {
 					
 					Spacer().frame(height: getFirstSpacerHeight(with: geometry))
@@ -28,7 +26,7 @@ struct Login_View: View {
 					
 					Spacer().frame(height: getSecondSpacerHeight(with: geometry))
 					
-					RegistrationLinkAndImageView(isRegistrationComplete: $isRegistrationComplete)
+					RegistrationLinkAndImageView(isRegistrationComplete: $isRegistrationComplete, loginIsValid: $loginIsValid)
 						.padding(.horizontal)
 						.frame(maxHeight: geometry.size.height * 0.15)
 				}
@@ -36,7 +34,15 @@ struct Login_View: View {
 			.background(LoginbackgroundView())
 			.navigationBarTitle("Explore Mars")
 			.navigationBarTitleDisplayMode(.large)
+			.onTapGesture {
+				dismissKeyboard()
+			}
 		}
+	}
+	
+	private func dismissKeyboard() {
+		
+		UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
 	}
 	
 	// .compact == true? ->  Landscape
@@ -44,7 +50,6 @@ struct Login_View: View {
 		
 		return verticalSizeClass == .compact ? geometry.size.height * 0.08 : geometry.size.height * 0.11
 	}
-	
 	
 	private func getSecondSpacerHeight(with geometry: GeometryProxy) -> CGFloat {
 		

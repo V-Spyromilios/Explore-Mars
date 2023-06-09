@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF47246A2A33722900A4B992 /* PickRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4724692A33722900A4B992 /* PickRoverView.swift */; };
 		EF6EE6C62A2E1901006F718E /* LoginbackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6EE6C52A2E1901006F718E /* LoginbackgroundView.swift */; };
 		EF6F43C92A28CDCD0009BDEA /* Explore_MarsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43C82A28CDCD0009BDEA /* Explore_MarsApp.swift */; };
 		EF6F43CB2A28CDCD0009BDEA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43CA2A28CDCD0009BDEA /* ContentView.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF4724692A33722900A4B992 /* PickRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRoverView.swift; sourceTree = "<group>"; };
 		EF6EE6C52A2E1901006F718E /* LoginbackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginbackgroundView.swift; sourceTree = "<group>"; };
 		EF6F43C52A28CDCD0009BDEA /* Explore Mars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Explore Mars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF6F43C82A28CDCD0009BDEA /* Explore_MarsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explore_MarsApp.swift; sourceTree = "<group>"; };
@@ -65,9 +67,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF4724682A336F5600A4B992 /* Rovers Image Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF4724692A33722900A4B992 /* PickRoverView.swift */,
+			);
+			path = "Rovers Image Views";
+			sourceTree = "<group>";
+		};
 		EF6F43BC2A28CDCD0009BDEA = {
 			isa = PBXGroup;
 			children = (
+				EF4724682A336F5600A4B992 /* Rovers Image Views */,
 				EF87F7A22A3222040070AD93 /* GoogleService-Info.plist */,
 				EF87F7A02A3221080070AD93 /* .gitignore */,
 				EF6F43C72A28CDCD0009BDEA /* Explore Mars */,
@@ -223,6 +234,7 @@
 				EF6F43D82A28CF1E0009BDEA /* Mission Manifest Model.swift in Sources */,
 				EF87F79F2A321CAB0070AD93 /* Registration Link and Image View.swift in Sources */,
 				EFF4CD5A2A2F86EA00F1DE42 /* registrationBackgroundView.swift in Sources */,
+				EF47246A2A33722900A4B992 /* PickRoverView.swift in Sources */,
 				EF6F43C92A28CDCD0009BDEA /* Explore_MarsApp.swift in Sources */,
 				EF6F43DD2A28D44E0009BDEA /* Login View.swift in Sources */,
 				EF6F43DB2A28CF600009BDEA /* Response Model.swift in Sources */,

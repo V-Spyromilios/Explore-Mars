@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct RegistrationView: View {
 	
@@ -16,9 +17,10 @@ struct RegistrationView: View {
 	@FocusState private var passwordIsFocused : Bool
 	@State private var registrationIsValid = false
 	@Binding var isRegistrationComplete: Bool
+	@State var registrationErrorIsShown: Bool = false
 	
 	var body: some View {
-
+		
 		GeometryReader { geometry in
 			VStack(spacing: 18) {
 				Spacer()
@@ -33,7 +35,7 @@ struct RegistrationView: View {
 					.cornerRadius(10)
 					.onReceive(viewModel.registrationIsValid) { result in
 						self.registrationIsValid = result
-		   }
+					}
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
 							.stroke(Color.white, lineWidth: 2)
@@ -53,37 +55,44 @@ struct RegistrationView: View {
 				
 				
 				Button("Continue", action: { print("Button Tapped.")
-					isRegistrationComplete = true
-					presentationMode.wrappedValue.dismiss()
+					Auth.auth().createUser(withEmail: $viewModel.newEmail.wrappedValue, password: $viewModel.newPassword.wrappedValue) { authResult, error in
+						if error != nil {
+							registrationErrorIsShown = true
+						}
+						else {
+							isRegistrationComplete = true
+							presentationMode.wrappedValue.dismiss()
+						}
+					}
 				})
-					.frame(height: 18)
-					.padding(.all)
-					.disabled(registrationIsValid ? false : true)
-					.background {
-						RoundedRectangle(cornerRadius: 10).fill(Color.blue)
-					}.foregroundColor(.white)
+				.frame(height: 18)
+				.padding(.all)
+				.disabled(registrationIsValid ? false : true)
+				.background {
+					RoundedRectangle(cornerRadius: 10).fill(Color.blue)
+				}.foregroundColor(.white)
 					.opacity(registrationIsValid ? 1.0 : 0.5)
 			}
-			.onTapGesture {
-				dismissKeyboard()
+			.alert(isPresented: $registrationErrorIsShown) {
+				Alert(title: Text("Registration Failed"), message: Text("Please try again"), dismissButton: .default(Text("OK")))
 			}
 		}.background(registrationBackgroundView())
 	}
-	
 	private func getFirstSpacerHeight(with geometry: GeometryProxy) -> CGFloat {
 		
 		return verticalSizeClass == .compact ? geometry.size.height * 0.08 : geometry.size.height * 0.11
 	}
-	private func dismissKeyboard() {
-
-		emailIsFocused = false
-		passwordIsFocused = false
-	}
+	//	private func dismissKeyboard() {
+	//
+	//		emailIsFocused = false
+	//		passwordIsFocused = false
+	//	}
 	
 	struct CustomTextFieldStyle: TextFieldStyle {
 		func _body(configuration: TextField<Self._Label>) -> some View {
 			configuration
 				.foregroundColor(.white)
+				.textInputAutocapitalization(.never)
 				.font(.system(size: 16, weight: .regular).italic())
 			//			.font(UIFont(name: <#T##String#>, size: <#T##CGFloat#>))
 		}
@@ -93,6 +102,6 @@ struct RegistrationView: View {
 
 struct RegistrationView_Previews: PreviewProvider {
 	static var previews: some View {
-		RegistrationView(isRegistrationComplete: .constant(false))
+		RegistrationView(isRegistrationComplete: .constant(false), registrationErrorIsShown: false)
 	}
 }

@@ -11,10 +11,13 @@ struct LoginFieldsAndButtonView: View {
 	
 	@Binding var email: String
 	@Binding var password: String
-	@FocusState var emailIsFocused : Bool
-	@FocusState var passwordIsFocused : Bool
+	
+	@FocusState var emailIsFocused
+	@FocusState var passwordIsFocused
+	
 	@Binding var loginIsValid: Bool
 	@ObservedObject var viewModel: LoginViewModel
+	@State var loginAlertIsShowing = false
 	
 	var body: some View {
 		VStack {
@@ -46,12 +49,9 @@ struct LoginFieldsAndButtonView: View {
 						.opacity(0.7)).padding(.horizontal)
 			Button("Log in", action: { print("Button Tapped.")
 				viewModel.signIn(withEmail: viewModel.email, password: viewModel.password) { result in
-					if result == true {
-						//show tabbar
+					if result == true {print("Login Successful") //show tabbar
 					}
-					else {
-						return //show Login Error Warning
-					}
+					else { loginAlertIsShowing = true }
 				}
 			})
 			.frame(height: 18)
@@ -61,30 +61,30 @@ struct LoginFieldsAndButtonView: View {
 				RoundedRectangle(cornerRadius: 10).fill(Color.blue)
 			}.foregroundColor(.white)
 				.opacity(loginIsValid  ? 1.0 : 0.5)
-		}.onTapGesture {
-			dismissKeyboard()
+		}
+		.alert(isPresented: $loginAlertIsShowing) {
+			Alert(title: Text("Login Failed"), message: Text("Please check your login credentials and try again"), dismissButton: .default(Text("OK")))
 		}
 	}
-		
-		func dismissKeyboard() {
-			
-			emailIsFocused = false
-			passwordIsFocused = false
-			
-		}
 	
 	struct CustomTextFieldStyle: TextFieldStyle {
+		
 		func _body(configuration: TextField<Self._Label>) -> some View {
 			configuration
 				.foregroundColor(.white)
+				.textInputAutocapitalization(.never)
 				.font(.system(size: 16, weight: .regular).italic())
 			//			.font(UIFont(name: <#T##String#>, size: <#T##CGFloat#>))
 		}
 	}
+}
 	
 	struct Login_Fields_and_Button_View_Previews: PreviewProvider {
+		@State private var emailIsFocused = false
+		@State private var passwordIsFocused = false
+
 		static var previews: some View {
 			LoginFieldsAndButtonView(email: .constant(""), password: .constant(""), loginIsValid: .constant(false), viewModel: LoginViewModel())
 		}
 	}
-}
+
