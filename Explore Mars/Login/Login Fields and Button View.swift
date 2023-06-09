@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct LoginFieldsAndButtonView: View {
-	
+
+	@EnvironmentObject var sessionManager: SessionManager
 	@Binding var email: String
 	@Binding var password: String
-	
+	@Binding var loginIsValid: Bool
 	@FocusState var emailIsFocused
 	@FocusState var passwordIsFocused
-	
-	@Binding var loginIsValid: Bool
 	@ObservedObject var viewModel: LoginViewModel
 	@State var loginAlertIsShowing = false
 	
@@ -30,35 +29,35 @@ struct LoginFieldsAndButtonView: View {
 				.padding(.all)
 				.cornerRadius(10)
 				.overlay(
-					RoundedRectangle(cornerRadius: 10)
+					RoundedRectangle(cornerRadius: 7)
 						.stroke(Color.white, lineWidth: 2)
 						.opacity(0.7)).padding(.horizontal)
 				.onReceive(viewModel.loginIsValid) { result in
 					loginIsValid = result
 				}
 			
-			TextField("", text: self.$viewModel.password, prompt: Text("password").foregroundColor(.white.opacity(0.6)))
+			SecureField("", text: self.$viewModel.password, prompt: Text("password").foregroundColor(.white.opacity(0.6)))
 				.textFieldStyle(CustomTextFieldStyle())
 				.focused($passwordIsFocused)
 				.frame(height: 18)
 				.padding(.all)
 				.cornerRadius(10)
 				.overlay(
-					RoundedRectangle(cornerRadius: 10)
+					RoundedRectangle(cornerRadius: 7)
 						.stroke(Color.white, lineWidth: 2)
 						.opacity(0.7)).padding(.horizontal)
 			Button("Log in", action: { print("Button Tapped.")
-				viewModel.signIn(withEmail: viewModel.email, password: viewModel.password) { result in
-					if result == true {print("Login Successful") //show tabbar
+				sessionManager.signIn(withEmail: viewModel.email, password: viewModel.password) { result in
+					if result != true {
+						loginAlertIsShowing = true
 					}
-					else { loginAlertIsShowing = true }
 				}
 			})
 			.frame(height: 18)
 			.padding(.all)
 			.disabled(loginIsValid ? false : true)
 			.background {
-				RoundedRectangle(cornerRadius: 10).fill(Color.blue)
+				RoundedRectangle(cornerRadius: 7).fill(Color.blue)
 			}.foregroundColor(.white)
 				.opacity(loginIsValid  ? 1.0 : 0.5)
 		}
@@ -78,13 +77,13 @@ struct LoginFieldsAndButtonView: View {
 		}
 	}
 }
-	
-	struct Login_Fields_and_Button_View_Previews: PreviewProvider {
-		@State private var emailIsFocused = false
-		@State private var passwordIsFocused = false
 
-		static var previews: some View {
-			LoginFieldsAndButtonView(email: .constant(""), password: .constant(""), loginIsValid: .constant(false), viewModel: LoginViewModel())
-		}
+struct Login_Fields_and_Button_View_Previews: PreviewProvider {
+	@State private var emailIsFocused = false
+	@State private var passwordIsFocused = false
+	
+	static var previews: some View {
+		LoginFieldsAndButtonView(email: .constant(""), password: .constant(""), loginIsValid: .constant(false), viewModel: LoginViewModel())
 	}
+}
 

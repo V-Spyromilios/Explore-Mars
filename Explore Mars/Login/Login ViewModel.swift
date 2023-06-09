@@ -24,19 +24,4 @@ class LoginViewModel: ObservableObject {
 		.eraseToAnyPublisher() //Covert to 'AnyPublisher' type.
 	}
 
-	func signIn(withEmail email: String, password: String, completion: @escaping (Bool) -> Void) {
-
-		FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-			guard let strongSelf = self else { //not to lose self while in async
-				completion(false)
-				return
-			}
-			if let error = error {
-				print("Sign-in failed with error: \(error.localizedDescription)")
-				completion(false)
-			} else {
-				completion(true)
-			}
-		}
-	}
 }

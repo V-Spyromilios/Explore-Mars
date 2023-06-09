@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct Login_View: View {
-	
+
+	@EnvironmentObject var sessionManager: SessionManager
 	@ObservedObject var viewModel = LoginViewModel()
 	@Environment(\.verticalSizeClass) private var verticalSizeClass
 	@State private var loginIsValid = false
@@ -17,25 +18,30 @@ struct Login_View: View {
 	
 	var body: some View {
 		NavigationView {
-			GeometryReader { geometry in
-				VStack(spacing: 18) {
-					
-					Spacer().frame(height: getFirstSpacerHeight(with: geometry))
-					
-					LoginFieldsAndButtonView(email: $viewModel.email, password: $viewModel.password, loginIsValid: $loginIsValid, viewModel: viewModel)
-					
-					Spacer().frame(height: getSecondSpacerHeight(with: geometry))
-					
-					RegistrationLinkAndImageView(isRegistrationComplete: $isRegistrationComplete, loginIsValid: $loginIsValid)
-						.padding(.horizontal)
-						.frame(maxHeight: geometry.size.height * 0.15)
-				}
+			if sessionManager.isLoggedin {
+				TabBarView(viewModel: viewModel)
 			}
-			.background(LoginbackgroundView())
-			.navigationBarTitle("Explore Mars")
-			.navigationBarTitleDisplayMode(.large)
-			.onTapGesture {
-				dismissKeyboard()
+			else {
+				GeometryReader { geometry in
+					VStack(spacing: 18) {
+						
+						Spacer().frame(height: getFirstSpacerHeight(with: geometry))
+						
+						LoginFieldsAndButtonView(email: $viewModel.email, password: $viewModel.password, loginIsValid: $loginIsValid, viewModel: viewModel)
+						
+						Spacer().frame(height: getSecondSpacerHeight(with: geometry))
+						
+						RegistrationLinkAndImageView(isRegistrationComplete: $isRegistrationComplete, loginIsValid: $loginIsValid)
+							.padding(.horizontal)
+							.frame(maxHeight: geometry.size.height * 0.15)
+					}
+				}
+				.background(LoginbackgroundView())
+				.navigationBarTitle("Explore Mars")
+				.navigationBarTitleDisplayMode(.large)
+				.onTapGesture {
+					dismissKeyboard()
+				}
 			}
 		}
 	}

@@ -22,11 +22,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct Explore_MarsApp: App {
 
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+	@StateObject private var sessionManager = SessionManager()
 
     var body: some Scene {
 
         WindowGroup {
             ContentView()
+				.environmentObject(sessionManager)
         }
     }
 }

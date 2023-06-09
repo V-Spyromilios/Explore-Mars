@@ -42,7 +42,7 @@ struct RegistrationView: View {
 							.opacity(0.7)).padding(.horizontal)
 				
 				
-				TextField("", text: $viewModel.newPassword, prompt: Text("password").foregroundColor(.white.opacity(0.6)))
+				SecureField("", text: $viewModel.newPassword, prompt: Text("password").foregroundColor(.white.opacity(0.6)))
 					.textFieldStyle(CustomTextFieldStyle())
 					.focused($passwordIsFocused)
 					.frame(height: 18)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF2F097B2A33B76200AE5772 /* TabBar View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2F097A2A33B76200AE5772 /* TabBar View.swift */; };
+		EF2F097D2A33BB5B00AE5772 /* Logout View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2F097C2A33BB5B00AE5772 /* Logout View.swift */; };
 		EF47246A2A33722900A4B992 /* PickRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4724692A33722900A4B992 /* PickRoverView.swift */; };
 		EF6EE6C62A2E1901006F718E /* LoginbackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6EE6C52A2E1901006F718E /* LoginbackgroundView.swift */; };
 		EF6F43C92A28CDCD0009BDEA /* Explore_MarsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43C82A28CDCD0009BDEA /* Explore_MarsApp.swift */; };
@@ -25,12 +27,15 @@
 		EF87F7A82A32227C0070AD93 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EF87F7A72A32227C0070AD93 /* FirebaseAuth */; };
 		EF87F7AA2A32227C0070AD93 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = EF87F7A92A32227C0070AD93 /* FirebaseCrashlytics */; };
 		EF87F7AC2A32227C0070AD93 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EF87F7AB2A32227C0070AD93 /* FirebaseDatabaseSwift */; };
+		EFA768EA2A33D4DC00CFF1ED /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA768E92A33D4DC00CFF1ED /* SessionManager.swift */; };
 		EFD574A32A2F61C500000071 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD574A22A2F61C500000071 /* RegistrationView.swift */; };
 		EFD574A52A2F673900000071 /* Registration ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD574A42A2F673900000071 /* Registration ViewModel.swift */; };
 		EFF4CD5A2A2F86EA00F1DE42 /* registrationBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF4CD592A2F86EA00F1DE42 /* registrationBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF2F097A2A33B76200AE5772 /* TabBar View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBar View.swift"; sourceTree = "<group>"; };
+		EF2F097C2A33BB5B00AE5772 /* Logout View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logout View.swift"; sourceTree = "<group>"; };
 		EF4724692A33722900A4B992 /* PickRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRoverView.swift; sourceTree = "<group>"; };
 		EF6EE6C52A2E1901006F718E /* LoginbackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginbackgroundView.swift; sourceTree = "<group>"; };
 		EF6F43C52A28CDCD0009BDEA /* Explore Mars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Explore Mars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +52,7 @@
 		EF87F79E2A321CAA0070AD93 /* Registration Link and Image View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Registration Link and Image View.swift"; sourceTree = "<group>"; };
 		EF87F7A02A3221080070AD93 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EF87F7A22A3222040070AD93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EFA768E92A33D4DC00CFF1ED /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		EFD574A22A2F61C500000071 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		EFD574A42A2F673900000071 /* Registration ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Registration ViewModel.swift"; sourceTree = "<group>"; };
 		EFF4CD592A2F86EA00F1DE42 /* registrationBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registrationBackgroundView.swift; sourceTree = "<group>"; };
@@ -99,6 +105,8 @@
 			children = (
 				EF6F43C82A28CDCD0009BDEA /* Explore_MarsApp.swift */,
 				EF6F43CA2A28CDCD0009BDEA /* ContentView.swift */,
+				EF2F097A2A33B76200AE5772 /* TabBar View.swift */,
+				EF2F097C2A33BB5B00AE5772 /* Logout View.swift */,
 				EF6F43DE2A28D45E0009BDEA /* Login */,
 				EF6F43D92A28CF330009BDEA /* Models */,
 				EF6F43CC2A28CDCE0009BDEA /* Assets.xcassets */,
@@ -130,6 +138,7 @@
 			children = (
 				EF6F43DC2A28D44E0009BDEA /* Login View.swift */,
 				EF87F79C2A3215390070AD93 /* Login Fields and Button View.swift */,
+				EFA768E92A33D4DC00CFF1ED /* SessionManager.swift */,
 				EF6EE6C52A2E1901006F718E /* LoginbackgroundView.swift */,
 				EF6F43DF2A28D7300009BDEA /* Login ViewModel.swift */,
 				EF87F79E2A321CAA0070AD93 /* Registration Link and Image View.swift */,
@@ -230,7 +239,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF6F43CB2A28CDCD0009BDEA /* ContentView.swift in Sources */,
+				EF2F097B2A33B76200AE5772 /* TabBar View.swift in Sources */,
 				EF87F79D2A3215390070AD93 /* Login Fields and Button View.swift in Sources */,
+				EF2F097D2A33BB5B00AE5772 /* Logout View.swift in Sources */,
 				EF6F43D82A28CF1E0009BDEA /* Mission Manifest Model.swift in Sources */,
 				EF87F79F2A321CAB0070AD93 /* Registration Link and Image View.swift in Sources */,
 				EFF4CD5A2A2F86EA00F1DE42 /* registrationBackgroundView.swift in Sources */,
@@ -241,6 +252,7 @@
 				EFD574A52A2F673900000071 /* Registration ViewModel.swift in Sources */,
 				EF6EE6C62A2E1901006F718E /* LoginbackgroundView.swift in Sources */,
 				EF6F43E02A28D7300009BDEA /* Login ViewModel.swift in Sources */,
+				EFA768EA2A33D4DC00CFF1ED /* SessionManager.swift in Sources */,
 				EFD574A32A2F61C500000071 /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
