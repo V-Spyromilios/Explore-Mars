@@ -10,25 +10,33 @@ import FirebaseCore
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-				   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-	FirebaseApp.configure()
-
-	return true
-  }
+	func application(_ application: UIApplication,
+					 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+		FirebaseApp.configure()
+		
+		return true
+	}
 }
 
 @main
 struct Explore_MarsApp: App {
 
-	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+	@StateObject var loginViewModel = LoginViewModel()
 	@StateObject private var sessionManager = SessionManager()
+	
+	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate //for Firebase
+	
+	var body: some Scene {
+		WindowGroup {
 
-    var body: some Scene {
-
-        WindowGroup {
-            ContentView()
-				.environmentObject(sessionManager)
-        }
-    }
+			if sessionManager.isLoggedin {
+				TabBarView()
+					
+			} else {
+				ContentView()
+					.environmentObject(sessionManager)
+					.environmentObject(loginViewModel)
+			}
+		}
+	}
 }

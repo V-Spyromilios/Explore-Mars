@@ -1,5 +1,6 @@
 
 GoogleService-Info.plist
+NasaApiKey.plist
 .DS_Store
 *.swp
 *~.nib

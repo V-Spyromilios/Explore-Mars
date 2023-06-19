@@ -10,13 +10,13 @@
 		EF2F097B2A33B76200AE5772 /* TabBar View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2F097A2A33B76200AE5772 /* TabBar View.swift */; };
 		EF2F097D2A33BB5B00AE5772 /* Logout View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2F097C2A33BB5B00AE5772 /* Logout View.swift */; };
 		EF47246A2A33722900A4B992 /* PickRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4724692A33722900A4B992 /* PickRoverView.swift */; };
+		EF69A3FC2A4092C300B9BC0A /* RoverSolImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF69A3FB2A4092C300B9BC0A /* RoverSolImagesViewModel.swift */; };
 		EF6EE6C62A2E1901006F718E /* LoginbackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6EE6C52A2E1901006F718E /* LoginbackgroundView.swift */; };
 		EF6F43C92A28CDCD0009BDEA /* Explore_MarsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43C82A28CDCD0009BDEA /* Explore_MarsApp.swift */; };
 		EF6F43CB2A28CDCD0009BDEA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43CA2A28CDCD0009BDEA /* ContentView.swift */; };
 		EF6F43CD2A28CDCE0009BDEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF6F43CC2A28CDCE0009BDEA /* Assets.xcassets */; };
 		EF6F43D02A28CDCE0009BDEA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF6F43CF2A28CDCE0009BDEA /* Preview Assets.xcassets */; };
-		EF6F43D82A28CF1E0009BDEA /* Mission Manifest Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43D72A28CF1E0009BDEA /* Mission Manifest Model.swift */; };
-		EF6F43DB2A28CF600009BDEA /* Response Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43DA2A28CF600009BDEA /* Response Model.swift */; };
+		EF6F43DB2A28CF600009BDEA /* RoverPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43DA2A28CF600009BDEA /* RoverPhotos.swift */; };
 		EF6F43DD2A28D44E0009BDEA /* Login View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43DC2A28D44E0009BDEA /* Login View.swift */; };
 		EF6F43E02A28D7300009BDEA /* Login ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6F43DF2A28D7300009BDEA /* Login ViewModel.swift */; };
 		EF87F79D2A3215390070AD93 /* Login Fields and Button View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF87F79C2A3215390070AD93 /* Login Fields and Button View.swift */; };
@@ -27,16 +27,21 @@
 		EF87F7A82A32227C0070AD93 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EF87F7A72A32227C0070AD93 /* FirebaseAuth */; };
 		EF87F7AA2A32227C0070AD93 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = EF87F7A92A32227C0070AD93 /* FirebaseCrashlytics */; };
 		EF87F7AC2A32227C0070AD93 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EF87F7AB2A32227C0070AD93 /* FirebaseDatabaseSwift */; };
+		EF92BCB32A3760FE00CA08AA /* RoverSolImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF92BCB22A3760FE00CA08AA /* RoverSolImagesView.swift */; };
+		EF92BCB82A376BC800CA08AA /* NasaApiKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF92BCB72A376BC800CA08AA /* NasaApiKey.plist */; };
+		EF92BCBA2A376C3C00CA08AA /* ApiConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF92BCB92A376C3B00CA08AA /* ApiConfiguration.swift */; };
 		EFA768EA2A33D4DC00CFF1ED /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA768E92A33D4DC00CFF1ED /* SessionManager.swift */; };
 		EFD574A32A2F61C500000071 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD574A22A2F61C500000071 /* RegistrationView.swift */; };
 		EFD574A52A2F673900000071 /* Registration ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD574A42A2F673900000071 /* Registration ViewModel.swift */; };
 		EFF4CD5A2A2F86EA00F1DE42 /* registrationBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF4CD592A2F86EA00F1DE42 /* registrationBackgroundView.swift */; };
+		EFFBC1722A39C1AF00AE61E0 /* MissionManifestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFBC1712A39C1AF00AE61E0 /* MissionManifestModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EF2F097A2A33B76200AE5772 /* TabBar View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBar View.swift"; sourceTree = "<group>"; };
 		EF2F097C2A33BB5B00AE5772 /* Logout View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logout View.swift"; sourceTree = "<group>"; };
 		EF4724692A33722900A4B992 /* PickRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRoverView.swift; sourceTree = "<group>"; };
+		EF69A3FB2A4092C300B9BC0A /* RoverSolImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverSolImagesViewModel.swift; sourceTree = "<group>"; };
 		EF6EE6C52A2E1901006F718E /* LoginbackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginbackgroundView.swift; sourceTree = "<group>"; };
 		EF6F43C52A28CDCD0009BDEA /* Explore Mars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Explore Mars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF6F43C82A28CDCD0009BDEA /* Explore_MarsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explore_MarsApp.swift; sourceTree = "<group>"; };
@@ -44,18 +49,21 @@
 		EF6F43CC2A28CDCE0009BDEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF6F43CF2A28CDCE0009BDEA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EF6F43D12A28CDCE0009BDEA /* Explore_Mars.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Explore_Mars.entitlements; sourceTree = "<group>"; };
-		EF6F43D72A28CF1E0009BDEA /* Mission Manifest Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mission Manifest Model.swift"; sourceTree = "<group>"; };
-		EF6F43DA2A28CF600009BDEA /* Response Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response Model.swift"; sourceTree = "<group>"; };
+		EF6F43DA2A28CF600009BDEA /* RoverPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotos.swift; sourceTree = "<group>"; };
 		EF6F43DC2A28D44E0009BDEA /* Login View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login View.swift"; sourceTree = "<group>"; };
 		EF6F43DF2A28D7300009BDEA /* Login ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login ViewModel.swift"; sourceTree = "<group>"; };
 		EF87F79C2A3215390070AD93 /* Login Fields and Button View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login Fields and Button View.swift"; sourceTree = "<group>"; };
 		EF87F79E2A321CAA0070AD93 /* Registration Link and Image View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Registration Link and Image View.swift"; sourceTree = "<group>"; };
 		EF87F7A02A3221080070AD93 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EF87F7A22A3222040070AD93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF92BCB22A3760FE00CA08AA /* RoverSolImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverSolImagesView.swift; sourceTree = "<group>"; };
+		EF92BCB72A376BC800CA08AA /* NasaApiKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NasaApiKey.plist; sourceTree = "<group>"; };
+		EF92BCB92A376C3B00CA08AA /* ApiConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfiguration.swift; sourceTree = "<group>"; };
 		EFA768E92A33D4DC00CFF1ED /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		EFD574A22A2F61C500000071 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		EFD574A42A2F673900000071 /* Registration ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Registration ViewModel.swift"; sourceTree = "<group>"; };
 		EFF4CD592A2F86EA00F1DE42 /* registrationBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registrationBackgroundView.swift; sourceTree = "<group>"; };
+		EFFBC1712A39C1AF00AE61E0 /* MissionManifestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionManifestModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				EF4724692A33722900A4B992 /* PickRoverView.swift */,
+				EF92BCB22A3760FE00CA08AA /* RoverSolImagesView.swift */,
+				EF69A3FB2A4092C300B9BC0A /* RoverSolImagesViewModel.swift */,
 			);
 			path = "Rovers Image Views";
 			sourceTree = "<group>";
@@ -87,6 +97,7 @@
 				EF4724682A336F5600A4B992 /* Rovers Image Views */,
 				EF87F7A22A3222040070AD93 /* GoogleService-Info.plist */,
 				EF87F7A02A3221080070AD93 /* .gitignore */,
+				EF92BCB72A376BC800CA08AA /* NasaApiKey.plist */,
 				EF6F43C72A28CDCD0009BDEA /* Explore Mars */,
 				EF6F43C62A28CDCD0009BDEA /* Products */,
 			);
@@ -127,8 +138,9 @@
 		EF6F43D92A28CF330009BDEA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EF6F43D72A28CF1E0009BDEA /* Mission Manifest Model.swift */,
-				EF6F43DA2A28CF600009BDEA /* Response Model.swift */,
+				EFFBC1712A39C1AF00AE61E0 /* MissionManifestModel.swift */,
+				EF6F43DA2A28CF600009BDEA /* RoverPhotos.swift */,
+				EF92BCB92A376C3B00CA08AA /* ApiConfiguration.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF6F43D02A28CDCE0009BDEA /* Preview Assets.xcassets in Resources */,
+				EF92BCB82A376BC800CA08AA /* NasaApiKey.plist in Resources */,
 				EF87F7A32A3222040070AD93 /* GoogleService-Info.plist in Resources */,
 				EF87F7A12A3221080070AD93 /* .gitignore in Resources */,
 				EF6F43CD2A28CDCE0009BDEA /* Assets.xcassets in Resources */,
@@ -238,19 +251,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF92BCB32A3760FE00CA08AA /* RoverSolImagesView.swift in Sources */,
 				EF6F43CB2A28CDCD0009BDEA /* ContentView.swift in Sources */,
 				EF2F097B2A33B76200AE5772 /* TabBar View.swift in Sources */,
+				EF69A3FC2A4092C300B9BC0A /* RoverSolImagesViewModel.swift in Sources */,
 				EF87F79D2A3215390070AD93 /* Login Fields and Button View.swift in Sources */,
 				EF2F097D2A33BB5B00AE5772 /* Logout View.swift in Sources */,
-				EF6F43D82A28CF1E0009BDEA /* Mission Manifest Model.swift in Sources */,
+				EFFBC1722A39C1AF00AE61E0 /* MissionManifestModel.swift in Sources */,
 				EF87F79F2A321CAB0070AD93 /* Registration Link and Image View.swift in Sources */,
 				EFF4CD5A2A2F86EA00F1DE42 /* registrationBackgroundView.swift in Sources */,
 				EF47246A2A33722900A4B992 /* PickRoverView.swift in Sources */,
 				EF6F43C92A28CDCD0009BDEA /* Explore_MarsApp.swift in Sources */,
 				EF6F43DD2A28D44E0009BDEA /* Login View.swift in Sources */,
-				EF6F43DB2A28CF600009BDEA /* Response Model.swift in Sources */,
+				EF6F43DB2A28CF600009BDEA /* RoverPhotos.swift in Sources */,
 				EFD574A52A2F673900000071 /* Registration ViewModel.swift in Sources */,
 				EF6EE6C62A2E1901006F718E /* LoginbackgroundView.swift in Sources */,
+				EF92BCBA2A376C3C00CA08AA /* ApiConfiguration.swift in Sources */,
 				EF6F43E02A28D7300009BDEA /* Login ViewModel.swift in Sources */,
 				EFA768EA2A33D4DC00CFF1ED /* SessionManager.swift in Sources */,
 				EFD574A32A2F61C500000071 /* RegistrationView.swift in Sources */,

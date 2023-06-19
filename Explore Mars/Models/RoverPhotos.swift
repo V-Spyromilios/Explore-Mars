@@ -1,5 +1,5 @@
 //
-//  Response Model.swift
+//  RoverPhotos.swift
 //  Explore Mars
 //
 //  Created by Evangelos Spyromilios on 01.06.23.
@@ -58,13 +58,13 @@ struct RoverPhotos: Decodable {
 
 		let name: String
 		let fullName: String
-		let roverId: Int
+		//let roverId: Int
 
 		enum CodingKeys: String, CodingKey {
 
 			case name
 			case fullName = "full_name"
-			case roverId = "rover_id"
+			//case roverId = "rover_id"
 		}
 
 		init(from decoder: Decoder) throws {
@@ -72,7 +72,7 @@ struct RoverPhotos: Decodable {
 			let container = try decoder.container(keyedBy: CodingKeys.self)
 			self.name = try container.decode(String.self, forKey: .name)
 			self.fullName = try container.decode(String.self, forKey: .fullName)
-			self.roverId = try container.decode(Int.self, forKey: .roverId)
+			//self.roverId = try container.decode(Int.self, forKey: .roverId)
 		}
 	}
 }

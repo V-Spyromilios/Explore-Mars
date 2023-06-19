@@ -14,7 +14,6 @@ class LoginViewModel: ObservableObject {
 	@Published var email: String = ""
 	@Published var password: String = ""
 
-
 	var loginIsValid: AnyPublisher<Bool, Never> {
 
 		Publishers.CombineLatest($email, $password).map { email, password in

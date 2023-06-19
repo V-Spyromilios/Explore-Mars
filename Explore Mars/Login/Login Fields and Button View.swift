@@ -17,10 +17,12 @@ struct LoginFieldsAndButtonView: View {
 	@FocusState var passwordIsFocused
 	@ObservedObject var viewModel: LoginViewModel
 	@State var loginAlertIsShowing = false
-	
+	@State private var loginError: Error?
+
+	//TODO: Check if .padding(.leading) is ok
 	var body: some View {
 		VStack {
-			TextField("", text: self.$viewModel.email, prompt: Text("email").foregroundColor(.white.opacity(0.6)))
+			TextField("", text: self.$viewModel.email, prompt: Text("email").foregroundColor(.white.opacity(0.6))).padding(.leading)
 				.textFieldStyle(CustomTextFieldStyle())
 				.textContentType(.emailAddress)
 				.focused($emailIsFocused)
@@ -47,9 +49,13 @@ struct LoginFieldsAndButtonView: View {
 						.stroke(Color.white, lineWidth: 2)
 						.opacity(0.7)).padding(.horizontal)
 			Button("Log in", action: { print("Button Tapped.")
-				sessionManager.signIn(withEmail: viewModel.email, password: viewModel.password) { result in
-					if result != true {
+				sessionManager.signIn(withEmail: viewModel.email, password: viewModel.password) { result, error in
+					if error != nil {
+						loginError = error
 						loginAlertIsShowing = true
+					}
+					else {
+						sessionManager.isLoggedin = true
 					}
 				}
 			})
@@ -62,7 +68,7 @@ struct LoginFieldsAndButtonView: View {
 				.opacity(loginIsValid  ? 1.0 : 0.5)
 		}
 		.alert(isPresented: $loginAlertIsShowing) {
-			Alert(title: Text("Login Failed"), message: Text("Please check your login credentials and try again"), dismissButton: .default(Text("OK")))
+			Alert(title: ((loginError != nil) ? Text("Login Failed"): Text("Successful Login")), message: ((loginError != nil) ? Text(loginError?.localizedDescription ?? "") : Text("You can now explore Mars")), dismissButton: .default(Text("OK")))
 		}
 	}
 	

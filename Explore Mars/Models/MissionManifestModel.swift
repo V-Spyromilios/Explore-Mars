@@ -1,27 +1,27 @@
 //
-//  Mission Manifest Model.swift
+//  MissionManifestModel.swift
 //  Explore Mars
 //
-//  Created by Evangelos Spyromilios on 01.06.23.
+//  Created by Evangelos Spyromilios on 14.06.23.
 //
 
 import Foundation
 
 struct MissionManifest: Decodable {
 	
-	let manifest: Manifest
-
+	var manifest: Manifest
+	
 	enum CodingKeys: String, CodingKey {
-
+		
 		case manifest = "photo_manifest"
 	}
-
+	
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		self.manifest = try container.decode(Manifest.self, forKey: .manifest)
 	}
-
 }
+
 
 struct Manifest: Decodable {
 

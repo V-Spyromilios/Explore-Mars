@@ -14,19 +14,26 @@ class SessionManager: ObservableObject {
 
 	@Published var isLoggedin: Bool = false
 
-	func signIn(withEmail email: String, password: String, completion: @escaping (Bool) -> Void) {
+	enum SessionError: String, Error {
+
+		case errorSelf = "Error while capturing self"
+		case errorSignIn = "Sign-in failed with error"
+	}
+
+	func signIn(withEmail email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
 
 		FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
 			guard let _ = self else { //not to lose self while in async
-				completion(false)
+				print(SessionError.errorSelf)
+				completion(nil, SessionError.errorSelf)
 				return
 			}
 			if let error = error {
-				print("Sign-in failed with error: \(error.localizedDescription)")
-				completion(false)
+				print("\(SessionError.errorSignIn)! -> \(error.localizedDescription)")
+				completion(authResult, error)
 			} else {
 				self?.isLoggedin = true
-				completion(true)
+				completion(authResult, nil)
 			}
 		}
 	}
@@ -36,7 +43,7 @@ class SessionManager: ObservableObject {
 		let firebaseAuth = Auth.auth()
 		do {
 		  try firebaseAuth.signOut()
-			isLoggedin = true
+			isLoggedin = false
 			completion(true, nil)
 		} catch let signOutError as NSError {
 			completion(false, signOutError)

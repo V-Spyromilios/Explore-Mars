@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+	@EnvironmentObject private var sessionManager: SessionManager
 	
 	var body: some View {
+		
+		if sessionManager.isLoggedin {
+			TabBarView()
+		} else {
 			Login_View()
+		}
 	}
 }
 

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct Login_View: View {
-
+	
 	@EnvironmentObject var sessionManager: SessionManager
-	@ObservedObject var viewModel = LoginViewModel()
+	@EnvironmentObject var viewModel: LoginViewModel
 	@Environment(\.verticalSizeClass) private var verticalSizeClass
 	@State private var loginIsValid = false
 	@State private var registrationViewIsPresented = false
@@ -18,10 +18,11 @@ struct Login_View: View {
 	
 	var body: some View {
 		NavigationView {
-			if sessionManager.isLoggedin {
-				TabBarView(viewModel: viewModel)
-			}
-			else {
+//			if sessionManager.isLoggedin {
+//
+//				TabBarView()
+//			}
+//			else {
 				GeometryReader { geometry in
 					VStack(spacing: 18) {
 						
@@ -44,7 +45,7 @@ struct Login_View: View {
 				}
 			}
 		}
-	}
+	
 	
 	private func dismissKeyboard() {
 		

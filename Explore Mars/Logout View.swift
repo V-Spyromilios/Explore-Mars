@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LogoutView: View {
 
-	@ObservedObject var viewModel: LoginViewModel
+	@EnvironmentObject var viewModel: LoginViewModel
 	@State var alertIsShown: Bool = false
 	@State var alertText: String = ""
 	@State var successfulLogout: Bool = false
@@ -32,14 +32,18 @@ struct LogoutView: View {
 						successfulLogout = true
 					}
 				}
-			}).frame(height: 18)
+			})
+			.frame(height: 18)
 			.padding(.all)
 			.background {
 				 RoundedRectangle(cornerRadius: 7).fill(Color.blue)
 			 }.foregroundColor(.white)
 		}
 		.alert(isPresented: $successfulLogout) {
-			Alert(title: Text(successfulLogout ? "Ciao!" : "Logout Failed"), message: Text(alertText), dismissButton: .default(Text("OK"), action: {
+			Alert(title: Text(successfulLogout ? "Ciao!" : "Logout Failed"),
+				  message: Text(alertText),
+				  dismissButton: .default(Text("OK"),
+										  action: {
 				sessionManager.isLoggedin = false}))
 		}
     }
@@ -47,6 +51,6 @@ struct LogoutView: View {
 
 struct Logout_View_Previews: PreviewProvider {
     static var previews: some View {
-		LogoutView(viewModel: LoginViewModel())
+		LogoutView()
     }
 }

@@ -8,34 +8,40 @@
 import SwiftUI
 
 struct TabBarView: View {
-
-	@ObservedObject var viewModel: LoginViewModel
+	
+	@EnvironmentObject var viewModel: LoginViewModel
 	@State private var selectedTab: Tab = .images
+	
 	enum Tab {
-			case images
-			case more
-		}
-
+		case images
+		case more
+	}
+	
 	var body: some View {
-		TabView {
-			PickRoverView()
-			.tabItem {
-				Image(systemName: "photo.stack.fill").renderingMode(.original)
-				Text("Images")
-			}.tag(Tab.images)
-			LogoutView(viewModel: viewModel)
-			.tabItem {
-				Image(systemName: "ellipsis.rectangle.fill").renderingMode(.original)
-				Text("More")
-			}.tag(Tab.more)
+		TabView(selection: $selectedTab) {
+			NavigationView {
+				PickRoverView()
+			}
+				.tabItem {
+					Image(systemName: "photo.stack.fill").renderingMode(.original)
+					Text("Images")
+				}.tag(Tab.images)
+			
+			NavigationView {
+				LogoutView()
+			}
+				.tabItem {
+					Image(systemName: "ellipsis.rectangle.fill").renderingMode(.original)
+					Text("More")
+				}.tag(Tab.more)
 		}
 	}
 }
 
 struct TabBar_View_Previews: PreviewProvider {
-    static var previews: some View {
-		TabBarView(viewModel: LoginViewModel())
-    }
+	static var previews: some View {
+		TabBarView()
+	}
 }
 
 extension View {

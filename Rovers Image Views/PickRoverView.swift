@@ -8,45 +8,37 @@
 import SwiftUI
 
 struct PickRoverView: View {
+	
+	let rovers = ["spirit","opportunity", "curiosity", "perseverance"]
 	var body: some View {
+		
 		GeometryReader { geometry in
 			List {
-				Button(action: { print("1 button was tapped")}) {
-					Image("spirit")
-						.resizable()
-						.frame(width: geometry.size.width, height: geometry.size.height * 0.5)
-						.aspectRatio(contentMode: .fill)
-				}.buttonStyle(.plain)
-					.listRowSeparator(.hidden)
-				Button(action: { print("2 button was tapped")}) {
-					Image("opportunity")
-						.resizable()
-						.frame(width: geometry.size.width, height: geometry.size.height * 0.5)
-						.aspectRatio(contentMode: .fill)
-				}
-				.buttonStyle(.plain)
-							.listRowSeparator(.hidden)
-				Button(action: { print("3 button was tapped")}) {
-					Image("curiosity")
-						.resizable()
-						.frame(width: geometry.size.width, height: geometry.size.height * 0.5)
-						.aspectRatio(contentMode: .fill)
-				}
-				.buttonStyle(.plain)
-							.listRowSeparator(.hidden)
-				Button(action: { print("4 button was tapped")}) {
-					Image("perseverance")
-						.resizable()
-						.frame(width: geometry.size.width, height: geometry.size.height * 0.5)
-						.aspectRatio(contentMode: .fill)
-				}
-				.buttonStyle(.plain)
-							.listRowSeparator(.hidden)
+				ForEach(rovers, id: \.self) { rover in
+					NavigationLink(destination: RoverSolImagesView(rover: rover)) {
+						ResizableImage(image: Image("\(rover)"), geometry: geometry, name: rover)
+					}
+				}.listRowSeparator(.hidden)
 			}.listStyle(PlainListStyle())
-			
 		}
 	}
 }
+
+struct ResizableImage: View {
+	let image: Image
+	let geometry: GeometryProxy
+	let name: String
+	
+	var body: some View {
+		image
+			.resizable()
+			.frame(width: geometry.size.width, height: geometry.size.height * 0.5)
+			.aspectRatio(contentMode: .fill)
+			.rotation3DEffect(.degrees(name == "spirit" ? 180: 0), axis: (x: 0, y: 1, z: 0))
+	}
+}
+
+
 struct PickRoverView_Previews: PreviewProvider {
 	static var previews: some View {
 		PickRoverView()
