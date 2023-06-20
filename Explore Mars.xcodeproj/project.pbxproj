@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF2E4E242A41C1F000328F3F /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E4E232A41C1EF00328F3F /* PhotosViewModel.swift */; };
 		EF2F097B2A33B76200AE5772 /* TabBar View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2F097A2A33B76200AE5772 /* TabBar View.swift */; };
 		EF2F097D2A33BB5B00AE5772 /* Logout View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2F097C2A33BB5B00AE5772 /* Logout View.swift */; };
 		EF47246A2A33722900A4B992 /* PickRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4724692A33722900A4B992 /* PickRoverView.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF2E4E232A41C1EF00328F3F /* PhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModel.swift; sourceTree = "<group>"; };
 		EF2F097A2A33B76200AE5772 /* TabBar View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBar View.swift"; sourceTree = "<group>"; };
 		EF2F097C2A33BB5B00AE5772 /* Logout View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logout View.swift"; sourceTree = "<group>"; };
 		EF4724692A33722900A4B992 /* PickRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRoverView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				EFFBC1712A39C1AF00AE61E0 /* MissionManifestModel.swift */,
 				EF6F43DA2A28CF600009BDEA /* RoverPhotos.swift */,
+				EF2E4E232A41C1EF00328F3F /* PhotosViewModel.swift */,
 				EF92BCB92A376C3B00CA08AA /* ApiConfiguration.swift */,
 			);
 			path = Models;
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF2E4E242A41C1F000328F3F /* PhotosViewModel.swift in Sources */,
 				EF92BCB32A3760FE00CA08AA /* RoverSolImagesView.swift in Sources */,
 				EF6F43CB2A28CDCD0009BDEA /* ContentView.swift in Sources */,
 				EF2F097B2A33B76200AE5772 /* TabBar View.swift in Sources */,

@@ -47,7 +47,7 @@ struct TabBar_View_Previews: PreviewProvider {
 extension View {
 	func tabBarModifier<SelectionValue>(selection: Binding<SelectionValue>) -> some View where SelectionValue : Hashable {
 		self
-			.accentColor(.red) // Change the accent color of the tab bar
+			.accentColor(.red)
 			.tabViewStyle(DefaultTabViewStyle()) // Change the tab bar style
 			.onChange(of: selection.wrappedValue) { _ in
 				UIImpactFeedbackGenerator(style: .light).impactOccurred() // Provide haptic feedback when switching tabs

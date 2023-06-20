@@ -13,6 +13,7 @@ import Foundation
 struct RoverPhotos: Decodable {
 
 	var photos = [Photo]()
+	var photosByCamera: [String: [Photo]] = [:]
 
 	enum CodingKeys: String, CodingKey {
 
@@ -24,6 +25,10 @@ struct RoverPhotos: Decodable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		self.photos = try container.decode([Photo].self, forKey: .photos)
 	}
+
+	init(photos: [Photo]) {
+		self.photos = photos
+	} // for sorting the receivedAlbum
 
 	struct Photo: Decodable {
 
