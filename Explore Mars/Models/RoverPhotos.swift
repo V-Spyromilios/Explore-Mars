@@ -26,10 +26,6 @@ struct RoverPhotos: Decodable {
 		self.photos = try container.decode([Photo].self, forKey: .photos)
 	}
 
-	init(photos: [Photo]) {
-		self.photos = photos
-	} // for sorting the receivedAlbum
-
 	struct Photo: Decodable {
 
 		let id: Int
@@ -57,6 +53,14 @@ struct RoverPhotos: Decodable {
 			self.dateTaken = try container.decode(String.self, forKey: .dateTaken)
 			self.camera = try container.decode(Camera.self, forKey: .camera)
 		}
+
+		init(demo: Bool = true) {
+			self.id = 007
+			self.sol = 1
+			self.urlSource = "https://images-assets.nasa.gov/image/as11-40-5874/metadata.json"
+			self.dateTaken = "20-06-2023"
+			self.camera = Camera(demo: true)
+		}
 	}
 
 	struct Camera: Decodable {
@@ -78,6 +82,11 @@ struct RoverPhotos: Decodable {
 			self.name = try container.decode(String.self, forKey: .name)
 			self.fullName = try container.decode(String.self, forKey: .fullName)
 			//self.roverId = try container.decode(Int.self, forKey: .roverId)
+		}
+
+		init(demo: Bool = true) {
+			self.fullName = "Front Cam Full Name"
+			self.name = "FRONTHAZ_CAM"
 		}
 	}
 }

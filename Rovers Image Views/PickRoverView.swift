@@ -8,18 +8,22 @@
 import SwiftUI
 
 struct PickRoverView: View {
-	
+
+	@State private var scrollViewContentOffset: CGFloat = .zero
 	let rovers = ["spirit","opportunity", "curiosity", "perseverance"]
+
 	var body: some View {
 		
 		GeometryReader { geometry in
-			List {
-				ForEach(rovers, id: \.self) { rover in
-					NavigationLink(destination: RoverSolImagesView(rover: rover)) {
-						ResizableImage(image: Image("\(rover)"), geometry: geometry, name: rover)
+			ScrollView(showsIndicators: false) {
+				VStack {
+					ForEach(rovers, id: \.self) { rover in
+						NavigationLink(destination: RoverSolImagesView(rover: rover)) {
+							ResizableImage(image: Image("\(rover)"), geometry: geometry, name: rover)
+						}
 					}
-				}.listRowSeparator(.hidden)
-			}.listStyle(PlainListStyle())
+				}
+			}
 		}
 	}
 }

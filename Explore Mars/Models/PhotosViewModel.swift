@@ -11,19 +11,21 @@ import Combine
 final class RoverPhotosApiService {
 	
 	var roverName: String = ""
-	var pickedSol: Int = 0
+	var pickedSol: Int?
 	@Published var receivedAlbum: RoverPhotos?
 	private var cancellables = Set<AnyCancellable>()
 	
 	init(roverName: String, pickedSol: Int) {
 		self.roverName = roverName
+		self.pickedSol = pickedSol
 		callPhotosApi()
 	}
 	
 	private func callPhotosApi() {
 		
 		guard let apiKey = Configuration.apiKey else { return }
-		guard let url = URL(string: "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=\(apiKey)&sol=\(pickedSol)") else { return }
+		
+		guard let url = URL(string: "https://api.nasa.gov/mars-photos/api/v1/rovers/\(roverName)/photos?api_key=\(apiKey)&sol=\(pickedSol!)") else { return }
 		
 		URLSession.shared.dataTaskPublisher(for: url)
 //			.receive(on: DispatchQueue.main)
@@ -45,6 +47,7 @@ final class RoverPhotosApiService {
 				self?.receivedAlbum = modifiableAlbum
 				if !Thread.isMainThread {
 					print("receivedAlbum on Background.")
+					print("receivedAlbum: \(receivedAlbum.photos.first?.urlSource)")
 				}
 				
 			}
@@ -64,13 +67,13 @@ final class RoverPhotosApiService {
 
 final class PhotosViewModel: ObservableObject {
 	@Published var receivedAlbum: RoverPhotos?
-	var apiService: RoverPhotosApiService?
+	var apiService: RoverPhotosApiService? = nil
 	var cancellables = Set<AnyCancellable>()
 	
 	init() {}
 	
 	func fetchData(with name: String, sol: Int = 0) {
-		print("fetch Data called.")
+		print("fetch Data called for \(name) and Sol: \(sol)")
 		apiService = RoverPhotosApiService(roverName: name, pickedSol: sol)
 		addSubscribers()
 		
