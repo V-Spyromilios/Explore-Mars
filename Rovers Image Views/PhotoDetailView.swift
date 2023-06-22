@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct PhotoDetailView: View {
-	var photo: RoverPhotos.Photo
+	var image: RoverPhotos.Photo
 
     var body: some View {
-		Text(photo.urlSource).font(.title)
+		Text("\(image.dateTaken)")
+//		image.resizable().aspectRatio(contentMode: .fill).ignoresSafeArea()
     }
 	
 }
 
-struct PhotoDetailView_Previews: PreviewProvider {
-
-    static var previews: some View {
-		PhotoDetailView(photo: .init())
-    }
-}
+//struct PhotoDetailView_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//		PhotoDetailView(image: Image(systemName: "up"))
+//    }
+//}

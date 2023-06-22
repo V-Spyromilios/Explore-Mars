@@ -18,12 +18,12 @@ struct RoverSolImagesView: View {
 	var totalSols: Int? {
 		missionViewModel.data?.manifest.totalSols
 	}
-	@StateObject var viewModel = PhotosViewModel()
+	@StateObject var photosViewModel = PhotosViewModel()
 	
 	var body: some View {
-		NavigationView {
+//		NavigationView {
 			GeometryReader { geometry in
-				ScrollView(showIndcators: false) {
+				ScrollView(showsIndicators: false) {
 					VStack {
 						HStack {
 							Spacer()
@@ -64,40 +64,47 @@ struct RoverSolImagesView: View {
 							}.padding()
 							
 							LazyVStack {
-								if let album = viewModel.receivedAlbum {
+								if let album = photosViewModel.receivedAlbum {
 									ForEach(album.photosByCamera.keys.sorted(), id: \.self) { cameraName in //'key' in
 										Section(header: HStack {
 											Text(cameraName).font(.title3).bold().padding(.leading)
 											Spacer()
 										}) {
 											ForEach(album.photosByCamera[cameraName] ?? [], id: \.id) { photo in
-												NavigationLink(destination: PhotoDetailView(photo: photo)) {
+												
+												NavigationLink(destination: PhotoDetailView(image: photo)) {
 													AsyncImage(url: URL(string: photo.urlSource)) { image in
 														image.resizable().aspectRatio(contentMode: .fill)
 													} placeholder: {
 														ProgressView()
 													}.shadow(radius: 8.0)
+													//												}
 												}
+												
 											}
-											
 										}
 									}
 								} else { Text( "Loading...").padding() }
 							} // Photos of the selectedSol
-						}else { Text("Data not available").padding(.vertical) }
+						} else { Text("Data not available").padding(.vertical) }
 					}
 				}
-			}.onAppear{ missionViewModel.fetchData(with: rover)
-				viewModel.fetchData(with: rover) //by default argument sol = 0
+			}.onAppear{
+				if !photosViewModel.isDataFetched {
+					missionViewModel.fetchData(with: rover)
+					photosViewModel.fetchData(with: rover, sol: selectedSol)
+				}//by default argument sol = 0
 			}
 			.onChange(of: missionViewModel.data?.manifest.totalSols) { totalSols in
 				if let totalSols = totalSols {
 					sols = Array(0...totalSols)
 				}
 			}
-			.onChange(of: selectedSol, perform: { sol in viewModel.fetchData(with: rover, sol: selectedSol) }) //Override the default sol
+			.onChange(of: selectedSol, perform: { sol in
+				photosViewModel.isDataFetched = false
+				photosViewModel.fetchData(with: rover, sol: selectedSol) }) //Override the default sol
 		}
-	}
+	
 }
 
 

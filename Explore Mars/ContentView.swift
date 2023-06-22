@@ -16,8 +16,8 @@ struct ContentView: View {
 			TabBarView()
 		} else {
 			Login_View()
-				.onAppear{
-				URLCache.shared.removeAllCachedResponses() }
+//				.onAppear{
+//				URLCache.shared.removeAllCachedResponses() }
 		}
 	}
 }
