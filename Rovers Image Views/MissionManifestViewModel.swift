@@ -1,5 +1,5 @@
 //
-//  RoverSolImagesViewModel.swift
+//  MissionManifestViewModel.swift
 //  Explore Mars
 //
 //  Created by Evangelos Spyromilios on 19.06.23.
@@ -43,7 +43,7 @@ final class MissionManifestApiService {
 	}
 	
 	private func handleOutput(output: URLSession.DataTaskPublisher.Output)throws -> Data {
-		
+
 		guard
 			let response = output.response as? HTTPURLResponse,
 			response.statusCode >= 200 && response.statusCode < 300 else { throw URLError(.badServerResponse) }
@@ -54,6 +54,7 @@ final class MissionManifestApiService {
 }
 
 final class MissionManifestViewModel: ObservableObject {
+
 	@Published var data: MissionManifest?
 	lazy var apiService = MissionManifestApiService(roverName: "")
 	var cancellables = Set<AnyCancellable>()
@@ -66,6 +67,7 @@ final class MissionManifestViewModel: ObservableObject {
 	}
 
 	private func addSubscribers() {
+
 		apiService.$receivedManifest
 			.sink{ [weak self] manifest in
 				guard let self = self else { return }
